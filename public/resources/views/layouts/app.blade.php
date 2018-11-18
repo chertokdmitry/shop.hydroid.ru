@@ -14,12 +14,12 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
 
-    <title>Gallery</title>
+    <title>TopShop</title>
 </head>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Photo Gallery</a>
+    <a class="navbar-brand" href="/">TopShop</a>
     <button class="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -31,48 +31,31 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-        @if (Route::has('login'))
+
             <div class="top-right links">
-                @auth
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/albums/create">Новый альбом</a>
+                            <p>Update:</p>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/home">Альбомы</a>
+                            <a class="nav-link"  href="/products">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin">Настройки</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/logout">Выйти</a>
+                            <a class="nav-link"  href="/categories">Categories</a>
                         </li>
                     </ul>
-                @else
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link"  href="{{ route('login') }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"  href="{{ route('register') }}">Register</a>
-                        </li>
-                    </ul>
-                @endauth
+
             </div>
-        @endif
-
-
-
 
     </div>
 </nav><br>
 
 @show
-<div class="container">
-        @section('content')
 
-        @show
-</div>
+    @section('content')
+
+    @show
+
 @section('footer')
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

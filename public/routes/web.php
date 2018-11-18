@@ -12,22 +12,11 @@
 */
 
 Route::get('/', 'IndexController@index');
+Route::get('/products', 'UpdateController@products');
+Route::get('/categories', 'UpdateController@categories');
+Route::get('/offers', 'UpdateController@offers');
 
-Route::get('/album/{id}', 'PhotosController@index');
+Route::get('/product/{id}', 'ProductController@index');
 
-Route::resource('/home', 'Admin\AlbumsResource')->middleware('auth');
-Route::resource('/albums', 'Admin\AlbumsResource')->middleware('auth');
-
-Route::resource('/photos', 'Admin\PhotosResource')->middleware('auth');
-
-Route::get('/albums/view/{id}', 'Admin\AlbumsResource@view')->middleware('auth');
-
-Route::get('/admin', 'Admin\ConfigController@index')->middleware('auth');
-Route::match(['get', 'post'], '/save', 'Admin\ConfigController@store');
-
-Auth::routes();
-
-Route::get('/users', ['middleware' => ['auth'], 'uses'=>'Core@show']);
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
