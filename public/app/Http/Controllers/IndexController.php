@@ -5,52 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Response;
 use App\Product;
 use App\Category;
-
+use App\Http\Controllers\Traits\CategoryTree;
 
 class IndexController extends Controller
 {
     public function index()
     {
         $items = Product::paginate(20);
-
-        $categories = $this->categories();
-
-
+        $categories = CategoryTree::getCategories();
         $view = view('main', ['items' => $items, 'categories' => $categories])->render();
+
         return (new Response($view));
     }
 
-    public function categories()
+    public function category($path)
     {
-        $categories = Category::all();
-        $newarray = $categories->toArray();
-        $tree = $this->buildTree($newarray);
+        $category = Category::where('alias', $path)->get();
+        $cat = $category->toArray();
+        $products = Category::find($cat[0]['id'])->products()->paginate(5);
+        $categories = CategoryTree::getCategories();
+        $view = view('main', ['items' => $products, 'categories' => $categories])->render();
 
-        return $tree;
-//        $view = view('category', ['items' => $tree])->render();
-//        return (new Response($view));
-
+        return (new Response($view));
     }
-
-    public function buildTree(array $elements, $parentId = 0, $level = 0)
-    {
-        $branch = array();
-        $level_ini = $level;
-
-        foreach ($elements as $element) {
-            $level = $level_ini;
-            if ($element['parent'] == $parentId) {
-                $element ['level'] = $level;
-                $children = $this->buildTree($elements, $element['id'], ++$level);
-                if ($children) {
-                    $element['childs'] =  $children;
-                }
-                $branch[] = $element;
-            }
-        }
-        return $branch;
-    }
-
-
-
 }

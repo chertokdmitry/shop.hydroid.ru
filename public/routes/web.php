@@ -14,8 +14,8 @@
 Route::get('/', 'IndexController@index');
 Route::get('/products', 'UpdateController@products');
 Route::get('/categories', 'UpdateController@categories');
-Route::get('/offers', 'UpdateController@offers');
-
+Route::get('/category/{path}', 'IndexController@category');
+Route::get('/productcategories', 'UpdateController@productCategories');
 Route::get('/product/{id}', 'ProductController@index');
 
 

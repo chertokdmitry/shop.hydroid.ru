@@ -14,41 +14,26 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
 
-    <title>TopShop</title>
+    <title>Topshop</title>
 </head>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">TopShop</a>
-    <button class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <a class="navbar-brand" href="/" style="margin-left:50px;">TopShop</a>
 
+        <div class="dropdown" style="margin-left:200px;">
+            <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Update
+            </a>
 
-            <div class="top-right links">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <p>Update:</p>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"  href="/products">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"  href="/categories">Categories</a>
-                        </li>
-                    </ul>
-
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="/products">Products</a>
+                <a class="dropdown-item" href="/categories">Categories</a>
+                <a class="dropdown-item" href="/productcategories">ProductCategories</a>
             </div>
-
-    </div>
-</nav><br>
+        </div>
+</nav>
+<br>
 
 @show
 
