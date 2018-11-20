@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
-use App\Product;
+use App\Models\Product;
 use App\Http\Controllers\Traits\CategoryTree;
 
 class ProductController extends Controller

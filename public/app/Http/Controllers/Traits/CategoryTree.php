@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Traits;
 
-use App\Category;
+use App\Models\Category;
 
 trait CategoryTree
 {

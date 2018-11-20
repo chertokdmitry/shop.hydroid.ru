@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
-use App\Product;
-use App\Category;
+use App\Models\Product;
+use App\Models\Category;
 use App\Http\Controllers\Traits\CategoryTree;
 
 class IndexController extends Controller
