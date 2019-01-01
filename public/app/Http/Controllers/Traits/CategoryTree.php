@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\Traits;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Cache;
 
 trait CategoryTree
 {
     public static function getCategories()
     {
-        $categories = Category::all();
-        $newarray = $categories->toArray();
-        $tree = self::buildTree($newarray);
+        $tree = Cache::remember('categories', 60, function () {
+
+            $categories = Category::all();
+            $newarray = $categories->toArray();
+            return self::buildTree($newarray);
+        });
 
         return $tree;
     }
