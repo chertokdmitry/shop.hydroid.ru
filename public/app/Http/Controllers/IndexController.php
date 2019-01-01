@@ -14,7 +14,6 @@ class IndexController extends Controller
         $items = Product::paginate(20);
         $categories = CategoryTree::getCategories();
         $view = view('main', ['items' => $items, 'categories' => $categories])->render();
-
         return (new Response($view));
     }
 
@@ -22,10 +21,9 @@ class IndexController extends Controller
     {
         $category = Category::where('alias', $path)->get();
         $cat = $category->toArray();
-        $products = Category::find($cat[0]['id'])->products()->paginate(5);
+        $products = Category::find($cat[0]['id'])->products()->paginate(9);
         $categories = CategoryTree::getCategories();
         $view = view('main', ['items' => $products, 'categories' => $categories])->render();
-
         return (new Response($view));
     }
 }

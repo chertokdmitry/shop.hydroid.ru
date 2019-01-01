@@ -1,29 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
-        <div class="row">
-            <div class="col"  style="margin-left:20px;">
-                @include('category',['items' => $categories])
-            </div>
-            <div class="col-9">
-                {{ $items->links() }}
-                <div class="card-deck" style="margin-bottom: 1rem;">
-                @foreach ($items as $item)
-                    <div class="card" style="min-width: 240px;
-                border-color: #fff; ">
-                        <div class="card-body mr-10">
-                            <a href="/product/{{ $item['id'] }}">
-                                <img class="card-img-top" border=0 style="max-width: 240px; max-height: 240px" src="{{ $item['image'] }}"></a>
-                            <br><br>
-                            <h6 class="card-title">
-                            <a href="/product/{{ $item['id'] }}">{{ $item['title'] }}</a>
-                            </h6>
-                            <p class="card-text">
-                            </p>
+                <div class="row"  style="margin-top: 100px; margin-left: 20px">
+                    <div class="col position-fixed">
+                        @include('category',['items' => $categories])
+                    </div>
+                    <div class="col-9" style="margin-left: 280px">
+
+                        {{ $items->links() }}
+                        <div class="row" style="width: 90%">
+                    @foreach ($items as $item)
+
+                    <div class="modal fade"
+                         id="image0" tabindex="-1"
+                         role="dialog"
+                         aria-labelledby="exampleModalCenterTitle"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <img class="card-img-top" src="{{ $item['image'] }}">
+                            </div>
                         </div>
                     </div>
-                @endforeach
+
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm" style="height: 360px;">
+                            <div class="card-body" >
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="#image0" data-toggle="modal" data-target="#image0">
+                                        <img class="card-img-top" src="{{ $item['image'] }}" style="max-width: 300px; max-height: 240px">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <a href="/product/{{ $item['id'] }}">
+                                    {{ $item['title'] }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                            </div>
+                        {{ $items->links() }}
+                    </div>
                 </div>
-                {{ $items->links() }}
-            </div>
+
+
 @endsection
