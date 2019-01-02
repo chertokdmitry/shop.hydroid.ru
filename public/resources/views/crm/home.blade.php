@@ -13,8 +13,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    Вы в панели управления!
 
-                    You are logged in!
+
+                        @isset($message)
+                            <div class="alert alert-success" role="alert">
+                                {{ $message }}
+                            </div>
+                        @endisset
+
                 </div>
             </div>
         </div>

@@ -7,6 +7,10 @@
                     </div>
                     <div class="col-9" style="margin-left: 280px">
 
+                        @isset($header)
+                            <h3>{{ $header }}</h3>
+                            @endisset
+
                         {{ $items->links() }}
                         <div class="row" style="width: 90%">
                     @foreach ($items as $item)

@@ -13,10 +13,14 @@
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/home', 'HomeController@main')->name('home')->middleware('auth');
+Route::get('/home/category/{path}', 'HomeController@homecategory')->middleware('auth');
 
+Route::get('/search',['uses' => 'SearchController@getSearch','as' => 'search']);
+Route::get('/update/search', 'SearchUpdate@products');
 Route::get('/', 'IndexController@index');
-Route::get('/products', 'UpdateController@products');
+Route::get('/update/products', 'UpdateController@products');
+Route::get('/update/categories', 'UpdateController@categories');
 Route::get('/categories', 'UpdateController@categories');
 Route::get('/category/{path}', 'IndexController@category');
 Route::get('/productcategories', 'UpdateController@productCategories');

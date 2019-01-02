@@ -60,24 +60,38 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="/home">
                             <span data-feather="home"></span>
+                            <br><br>
                             Панель управления <span class="sr-only">(current)</span>
                         </a>
                     </li>
                 </ul>
+
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Статьи</span>
+                    <span>Cкачать json</span>
                 </h6>
                 <ul class="nav flex-column mb-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="/article/create">
+                        <a class="nav-link" href="/update/products">
                             <span data-feather="file"></span>
-                            Новая статья
+                            Обновить товары
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/article/">
-                            <span data-feather="file-text"></span>
-                            Все статьи
+                        <a class="nav-link" href="/update/categories">
+                            <span data-feather="file"></span>
+                            Обновить категории
+                        </a>
+                    </li>
+                </ul>
+
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>ElasticSearch</span>
+                </h6>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/update/search">
+                            <span data-feather="file"></span>
+                            Обновить поиск
                         </a>
                     </li>
                 </ul>
@@ -85,32 +99,10 @@
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Категории</span>
                 </h6>
-                <ul class="nav flex-column mb-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/category/create">
-                            <span data-feather="file"></span>
-                            Новая категория
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/category/">
-                            <span data-feather="layers"></span>
-                            Все категории
-                        </a>
-                    </li>
-                </ul>
 
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Комментарии</span>
-                </h6>
-                <ul class="nav flex-column mb-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/comments/">
-                            <span data-feather="users"></span>
-                            Все комментарии
-                        </a>
-                    </li>
-                </ul>
+                @include('category',['items' => $categories])
+
+
             </div>
         </nav>
 

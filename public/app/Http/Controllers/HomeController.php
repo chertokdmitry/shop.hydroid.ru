@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Route;
-use App\Models\Article;
+use App\Http\Controllers\Traits\CategoryTree;
 use App\Models\Category;
-use App\Models\Comment;
-
 
 class HomeController extends Controller
 {
@@ -26,10 +23,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function main()
     {
-        $view = view('crm/home')->render();
+        $categories = CategoryTree::getCategories();
 
+        $view = view('crm/home', ['categories' => $categories])->render();
+
+        return (new Response($view));
+    }
+
+    public function homecategory($path)
+    {
+        $category = Category::where('alias', $path)->get();
+        $cat = $category->toArray();
+        $products = Category::find($cat[0]['id'])->products()->paginate(9);
+        $categories = CategoryTree::getCategories();
+        $view = view('crm/category', ['items' => $products, 'categories' => $categories])->render();
         return (new Response($view));
     }
 }

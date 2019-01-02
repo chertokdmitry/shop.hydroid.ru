@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Traits\CategoryTree;
 
 class UpdateController extends Controller
 {
@@ -34,7 +36,13 @@ class UpdateController extends Controller
             $product->save();
         }
 
-        return redirect('/');
+        $this->productCategories();
+
+        $categories = CategoryTree::getCategories();
+        $view = view('crm/home', ['categories' => $categories, 'message'=> 'Товары обновлены'])->render();
+
+        return (new Response($view));
+
     }
 
     public function categories()
@@ -55,7 +63,12 @@ class UpdateController extends Controller
             }
         }
 
-        return redirect('/');
+        $this->productCategories();
+
+        $categories = CategoryTree::getCategories();
+        $view = view('crm/home', ['categories' => $categories, 'message'=> 'Категории обновлены'])->render();
+
+        return (new Response($view));
     }
 
     public function productCategories()
@@ -75,6 +88,5 @@ class UpdateController extends Controller
                 }
             }
         }
-        return redirect('/');
     }
 }
