@@ -13,11 +13,11 @@ class SearchUpdate extends Controller
     {
         $client = ClientBuilder::create()->build();
 
-        $deleteParams = [
-            'index' => 'products'
-        ];
-
-        $client->indices()->delete($deleteParams);
+//        $deleteParams = [
+//            'index' => 'products'
+//        ];
+//
+//        $client->indices()->delete($deleteParams);
 
         $items = Product::all();
 
